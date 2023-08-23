@@ -137,11 +137,26 @@ lst = ["name", "age", "gender", "marks"]
 
 tpl = ("kriss", 20, "male", 90)
 
+dic = {}
+print(dic)
+
+dic["io"] = 120
+
+print(dic)
+
+# for i in range(4):
+#     x = lst[i]
+#     y = tpl[i]
+    
+#     dic[x] = y
+    
+# print(dic)
+
 
 # dic = {}
 # output
 
-{"name" : "kriss", "age" : 20, "gender" : "male", "marks" : 90}
+# {"name" : "kriss", "age" : 20, "gender" : "male", "marks" : 90}
 
 
 
