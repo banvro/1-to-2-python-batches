@@ -23,7 +23,14 @@ def showthiss():
 
 @app.route('/send_data', methods = ['post', ])
 def savedata():
-    pass
+    if request.method == "POST":
+        uname = request.form.get('usernmae')
+        age = request.form.get('age')
+        print(uname, age)
+        # user = request.form['usernmae']
+
+        return f"usernae is {uname} and user age is {age}"
+
     
 
 
