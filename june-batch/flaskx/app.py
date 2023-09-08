@@ -1,20 +1,10 @@
 from flask import Flask
-from flask import render_template, request, redirect
-
+from flask import render_template, request
 import mysql.connector
 
-
-conn = mysql.connector.connect(host = "localhost", username = "root", password = "1234", database = "xyz")
-
-curser = conn.cursor()
-
-
-
-
-
-
-
 app = Flask(__name__)
+conwc = mysql.connector.connect(host = "localhost", user = "root", password = "1234", database = "test", auth_plugin='mysql_native_password')
+couser = conwc.cursor()
 
 @app.route('/')
 def xyz():
@@ -40,11 +30,9 @@ def savedata():
     if request.method == "POST":
         uname = request.form.get('usernmae')
         age = request.form.get('age')
-        # print(uname, age)
-        curser.execute(f"insert into mytable values('{uname}', {age})")
-        conn.commit()
-
-        return redirect("xyz")
+        print(uname, age)
+        couser.execute(f'insert into hlo values("{uname}", {age})')
+        conwc.commit()
         # user = request.form['usernmae']
 
         return f"usernae is {uname} and user age is {age}"
