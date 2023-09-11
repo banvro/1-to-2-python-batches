@@ -20,7 +20,7 @@ app = Flask(__name__)
 def xyz():
     return "hello website.."
 
-@app.route('/about')
+@app.route('/abouts')
 def aboutus():
     return "this is my about page....."
 
@@ -49,7 +49,13 @@ def savedata():
 
         return f"usernae is {uname} and user age is {age}"
 
-    
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
 
 
 
