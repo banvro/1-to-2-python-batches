@@ -58,6 +58,13 @@ def contact():
     return render_template("contact.html")
 
 
+@app.route("/showdata")
+def showdata():
+    curser.execute("select * from mytable")
+    mydata = curser.fetchall()
+    print(mydata)
+    return render_template("showdata.html", data = mydata)
+
 
 if __name__ == "__main__":
     app.run(debug = True) 

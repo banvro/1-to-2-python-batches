@@ -37,7 +37,11 @@ def savedata():
 
         return f"usernae is {uname} and user age is {age}"
 
-    
+@app.route("/show")
+def showdata():
+    couser.execute('select * from hlo')
+    data = couser.fetchall()
+    return render_template("show.html", data = data)
 
 
 
