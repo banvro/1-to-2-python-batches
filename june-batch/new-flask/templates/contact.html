@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+
+
+{% block body %}
+
+<div style="display: flex; justify-content: center;">
+    <form style="padding: 20px; border: 2px solid red;">
+        <h1 style="text-align: center; color: green;">Contact Us</h1>
+        <hr>
+        <hr>
+        <div style="display: flex; padding: 9px;">
+            <label style="margin-right: 64px;">Full Name</label>
+            <input type="text" placeholder="Enter your name.." >
+        </div>
+        <div style="display: flex; padding: 9px;">
+            <label style="margin-right: 64px;">Phone Number</label>
+            <input style="margin-left: -28px;" type="number" placeholder="Enter your Phone Numver.." >
+        </div>
+        <div style="display: flex; padding: 9px;">
+            <label style="margin-right: 64px;">Email</label>
+            <input type="email" placeholder="Enter your Email Address.." >
+        </div>
+        <div style="display: flex; padding: 9px;">
+            <label style="margin-right: 64px;">Message</label>
+            <textarea placeholder="PLease Enter Your messgae.."></textarea>
+        </div>
+
+
+       <div style="    display: flex;
+       justify-content: center;
+       margin-top: 16px;
+       color: red;">
+        <button class="btnx">Submit</button>
+       </div>
+        
+    </form>
+</div>
+
+
+{% endblock body %}

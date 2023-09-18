@@ -1,0 +1,288 @@
+{% extends 'base.html' %}
+
+{% block xyz %}
+<style>
+    @import "bourbon";
+    @import url('https://fonts.googleapis.com/css?family=Oswald|Poppins');
+    body {
+    /* font-family: 'Oswald', sans-serif; */
+    font-family: 'Poppins', sans-serif;
+    }
+    .card-box {
+    background: #F5F5F5;
+    min-height: 171px;
+    position: relative;
+    padding: 30px 30px 20px;
+    margin: 50px 0;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    position: relative;
+    cursor: pointer;
+    -moz-box-shadow:    3px 3px 4px 5px #ccc;
+    -webkit-box-shadow: 3px 3px 4px 5px #ccc;
+    box-shadow:         3px 3px 4px 5px #ccc;
+    }
+    .card-box:after {
+    display: block;
+    background: #2196F3;
+    border-top: 2px solid #2196F3;
+    content: '';
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    }
+    .card-title h2 {
+    margin: 0;
+    padding-top: 5%;
+    color: #2196F3;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    font-size: 24px;
+    line-height: 1;
+    margin-bottom: 15px;
+    }
+    .card-title p {
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 16px;
+    }
+    .card-link a {
+    text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+    color: #FF5722;
+    font-size: 15px;
+    }
+
+
+    /* The ribbons */
+
+    .corner-ribbon{
+    width: 200px;
+    background: #e43;
+    position: absolute;
+    top: 25px;
+    left: -50px;
+    text-align: center;
+    line-height: 50px;
+    letter-spacing: 1px;
+    color: #f0f0f0;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    }
+
+    /* Custom styles */
+
+    .corner-ribbon.sticky{
+    position: fixed;
+    }
+
+    .corner-ribbon.shadow{
+    box-shadow: 0 0 3px rgba(0,0,0,.3);
+    }
+
+    /* Different positions */
+
+    .corner-ribbon.top-left{
+    top: 25px;
+    left: -50px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    }
+
+    .corner-ribbon.top-right{
+    top: 25px;
+    right: -50px;
+    left: auto;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    }
+
+    .corner-ribbon.bottom-left{
+    top: auto;
+    bottom: 25px;
+    left: -50px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    }
+
+    .corner-ribbon.bottom-right{
+    top: auto;
+    right: -50px;
+    bottom: 25px;
+    left: auto;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    }
+    /* Colors */
+    .corner-ribbon.blue{background: #2196F3;}
+
+
+
+    $blue: #0070BB;
+
+    .ribbon {
+    position: relative;
+    background: $blue;
+    color: white;
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    font-family: Source Sans Pro;
+    text-align: center;
+    z-index: 3;
+    &:before {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 12px 12px 0;
+        border-color: transparent darken($blue,20) transparent transparent;
+        left: -1px;
+        bottom: -12px;
+        z-index: 1;
+    }
+    &:after {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 12px 12px 0 0;
+        border-color:  darken($blue,20) transparent transparent transparent;
+        right: -1px;
+        bottom: -12px;
+        z-index: 1;
+    }
+    .left-fold {
+        @include linear-gradient(-90deg, darken($blue,10), darken($blue,5));
+        position: absolute;
+        height: 50px;
+        width: 25px;
+        left: -15px;
+        bottom: -12px;
+        display: block;
+        margin: 0;
+        border-right: 1px solid darken($blue,10);
+        &:before {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 15px 25px 0;
+        border-color: transparent darken($blue,5) transparent transparent;
+        left: -15px;
+        top: 0;
+        }
+        &:after {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 0 25px 15px;
+        border-color: transparent transparent darken($blue,5) transparent;
+        left: -15px;
+        bottom: 0;
+        }
+    }
+    h3 {
+        z-index: 2;
+        position: relative;
+        background: $blue;
+        width: 100%;
+        display: block;
+        font-size: 19px;
+        line-height: 1.3em;
+        padding: 15px 0;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+    .right-fold {
+        @include linear-gradient(90deg, darken($blue,10), darken($blue,5));
+        position: absolute;
+        height: 50px;
+        width: 25px;
+        right: -15px;
+        bottom: -12px;
+        display: block;
+        margin: 0;
+        border-left: 1px solid darken($blue,10);
+        &:before {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 25px 15px 0 0;
+        border-color:  darken($blue,5) transparent transparent transparent;
+        right: -15px;
+        top: 0;
+        }
+        &:after {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 25px 0 0 15px;
+        border-color: transparent transparent transparent darken($blue,5);
+        right: -15px;
+        bottom: 0;
+        }
+    }
+    }
+</style>
+<div>
+    <div class="container mt-5">
+        <div class="row justify-content-center mb-2">
+            
+            {% for i in data %}
+            <div class="col-md-4 col-sm-6 col-12">
+                <div class="card-box">
+                    <div class="card-title">
+                        <div class="ribbon">
+                            <span class="left-fold">
+                            </span>
+                            <h3>{{i[0]}}</h3>
+                            <span class="right-fold">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p>{{i[1]}}</p>
+                    </div>
+                    <div class="card-link">
+                        <a href class="c-link">Learn More
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </div>
+                    <form action="">
+                        <button type="submit">Delete</button>
+                    </form>
+                    <button type="submit">Update</button>
+                </div>
+            </div>
+            {% endfor %}
+
+
+        </div>
+        
+    </div>
+    <div class="corner-ribbon top-left sticky blue shadow">Lorem ipsum</div>
+    <div class="corner-ribbon top-right sticky blue shadow">Lorem ipsum</div>
+    <div class="corner-ribbon bottom-left sticky blue shadow">Lorem ipsum</div>
+    <div class="corner-ribbon bottom-right sticky blue shadow">Lorem ipsum</div>
+</div>
+
+{% endblock xyz %}
+
+{% block title %}my data{% endblock title %}
