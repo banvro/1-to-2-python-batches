@@ -1,6 +1,6 @@
 # pip install flask
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 import mysql.connector
 
 
@@ -28,9 +28,9 @@ def savedata():
         dec = request.form.get("dec")
 
         # print(name, number, email, dec)
-        curser.execute(f"insert into flasktable values('{name}', {number},'{email}', '{dec}')")
-
-        return f"save data {name, number, email, dec}"
+        curser.execute(f"insert into flasktables values('{name}', {number},'{email}', '{dec}')")
+        conn.commit()
+        return redirect("/show")
     return "save data"
     
 @app.route("/about")
@@ -43,8 +43,15 @@ def services():
 
 @app.route("/show")
 def show():
-    return render_template("show.html")
+    curser.execute("select * from flasktables")
+    data = curser.fetchall()
+    return render_template("show.html", mydata = data)
 
+@app.route("/delete/<xyz>", methods = ["POST",])
+def deletethis(xyz):
+    if request.method == "POST":
+        curser.execute(f"delete from flasktables where Name = '{xyz}'")
+        return redirect("/show")
 
 
 
