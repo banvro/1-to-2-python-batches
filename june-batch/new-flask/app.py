@@ -55,10 +55,24 @@ def deletethis(xyz):
 
 
 
+@app.route("/update/<rt>", methods = ["POST", ])
+def updatethis(rt):
+    curser.execute(f"select * from flasktables where Name = '{rt}'")
+    zx = curser.fetchone()
+    return render_template("updateview.html", abc = zx)
 
 
+@app.route("/updatethis/<t>", methods = ["POST", ])
+def updatenow(t):
+    if request.method == "POST":
+        name = request.form.get("name")
+        number = request.form.get("number")
+        email = request.form.get("email")
+        dec = request.form.get("dec")
 
-
+        curser.execute(f"update flasktables set Name = '{name}',Phone_Number = {number}, Email = '{email}', Message = '{dec}' where Name = '{t}'")
+        conn.commit()
+        return redirect("/show")
 
 if __name__ == "__main__":
     app.run(debug = True, port = 1000)

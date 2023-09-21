@@ -26,9 +26,12 @@ color: red;">
 
                 <div style="display: flex;
                 justify-content: space-between;">
-                    <button type="submit">Update</button>
+            
                     <form action="delete/{{i[0]}}" method="POST">
                         <button type="submit">Delete</button>
+                    </form>
+                    <form action="update/{{i[0]}}" method="POST">
+                        <button type="submit">Update</button>
                     </form>
                 </div>
             </div>
