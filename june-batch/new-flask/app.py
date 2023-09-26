@@ -2,7 +2,7 @@
 
 from flask import Flask, render_template, request, redirect
 import mysql.connector
-
+import os
 
 conn = mysql.connector.connect(host="localhost", username= "root", password="1234", database="flasktable")
 
@@ -26,9 +26,17 @@ def savedata():
         number = request.form.get("number")
         email = request.form.get("email")
         dec = request.form.get("dec")
+        image = request.files.get("img")
+        if image:
+            image.save(os.path.join("static/images", image.filename))
 
+            zx = os.path.join("static/images", image.filename)
         # print(name, number, email, dec)
-        curser.execute(f"insert into flasktables values('{name}', {number},'{email}', '{dec}')")
+        curser.execute("""
+            insert into flasktables(name, phone_number, email, message, image_path)
+                       values(%s, %s, %s, %s, %s)
+                               """, (name, number, email, dec, zx))
+        # curser.execute(f"insert into flasktables values('{name}', {number},'{email}', '{dec}')")
         conn.commit()
         return redirect("/show")
     return "save data"

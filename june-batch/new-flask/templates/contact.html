@@ -5,7 +5,7 @@
 {% block body %}
 
 <div style="display: flex; justify-content: center;">
-    <form style="padding: 20px; border: 2px solid red;" action="/savedata" method="post">
+    <form style="padding: 20px; border: 2px solid red;" action="/savedata" method="post" enctype="multipart/form-data">
         <h1 style="text-align: center; color: green;">Contact Us</h1>
         <hr>
         <hr>
@@ -25,7 +25,10 @@
             <label style="margin-right: 64px;">Message</label>
             <textarea placeholder="PLease Enter Your messgae.." name = "dec"></textarea>
         </div>
-
+        <div style="display: flex; padding: 9px;">
+            <label style="margin-right: 64px;">Upload Image</label>
+            <input type="file" name="img">
+        </div>
 
        <div style="    display: flex;
        justify-content: center;
