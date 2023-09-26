@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+
+
+{% block body %}
+
+
+<div style="    display: flex;
+justify-content: center;
+color: red;">
+    <div style="width: 61%; height: auto; border: 2px solid; padding: 11px;">
+        <h1 style="text-align: center;">Show Data</h1>
+        <div style="    display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;">
+            {% for i in mydata %}
+            <div style="padding: 12px;
+            border: 2px solid;
+            max-width: 31%;
+            border-radius: 10px;">
+            {% if i[5] %}
+            <img src="/static/{{i[5]}}" alt="Image" style="max-width: 100%; height: auto;">
+            {% endif %}
+                <h4>Full Name : <span class="spantah">{{i[1]}}</span></h4>
+                <h4>Phone Number : <span class="spantah">{{i[2]}}</span></h4>
+                <h4>Email : <span class="spantah">{{i[3]}}</span></h4>
+                <h4>Message : <span class="spantah">{{i[4]}}</span></h4>
+                <h4>Image : <span class="spantah">
+                    ln
+                </span></h4>
+                
+                <div style="display: flex;
+                justify-content: space-between;">
+            
+                    <form action="delete/{{i[0]}}" method="POST">
+                        <button type="submit">Delete</button>
+                    </form>
+                    <form action="update/{{i[0]}}" method="POST">
+                        <button type="submit">Update</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock body %}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .mycs{
+            padding: 21px;
+            font-size: 20px;
+            font-weight: 800;
+            color: red;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: center;
+            color: red;
+            margin-top: 87px;
+        }
+
+        .btnx {
+            color: #f1eded;
+            background-color: green;
+            padding: 28px;
+            padding-top: 11px;
+            padding-bottom: 11px;
+            border-radius: 12px;
+        }
+
+        .spantah{
+            font-weight: 100;
+            color: black;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div style="display: flex; justify-content: center;">
+        <a class="mycs" href="/">Home</a>
+        <a class="mycs" href="/about">About</a>
+        <a class="mycs" href="/contact">Contact</a>
+        <a class="mycs" href="/services">Services</a>
+        <a class="mycs" href="/show">Show Data</a>
+    </div>
+
+    
+    {% block body %}{% endblock body %}
+
+
+    {% block xyz %}{% endblock xyz %}
+
+
+
+    <h1 class="footer">This is my Footer</h1>
+    
+</body>
+</html>
