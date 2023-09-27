@@ -51,8 +51,14 @@ def services():
 
 @app.route("/show")
 def show():
-    curser.execute("select * from flasktables")
-    data = curser.fetchall()
+    zx = request.args.get('q')
+    if zx:
+        curser.execute(f"select * from flasktables where Name = '{zx}'")
+        data = curser.fetchall()
+    else:
+        curser.execute("select * from flasktables")
+        data = curser.fetchall()
+
     return render_template("show.html", mydata = data)
 
 @app.route("/delete/<xyz>", methods = ["POST",])

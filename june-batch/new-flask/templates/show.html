@@ -13,6 +13,20 @@ color: red;">
         <div style="    display: flex;
         flex-wrap: wrap;
         justify-content: space-evenly;">
+
+
+        <form action="/show" method="GET">
+            <div style="    position: absolute;
+            margin-left: 39%;
+            margin-top: -62px;">
+            <input type="text" name = "q" placeholder="enter somthing">
+            <button type="submit" >Search</button>
+        </div>
+        </form>
+
+
+
+
             {% for i in mydata %}
             <div style="padding: 12px;
             border: 2px solid;
