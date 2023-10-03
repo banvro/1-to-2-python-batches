@@ -1,6 +1,6 @@
 # pip install flask
 
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash
 import mysql.connector
 import os
 
@@ -9,7 +9,7 @@ conn = mysql.connector.connect(host="localhost", username= "root", password="123
 curser = conn.cursor()
 
 app = Flask(__name__)
-
+app.secret_key = "sjkdfsjdfbjf"
 
 @app.route("/")
 def home():
@@ -36,11 +36,12 @@ def savedata():
         print(name, number, email, dec)
         # curser.execute(f"insert into flasktables values('','{name}', {number},'{email}', '{dec}', '{image_path}')")
         
-        curser.execute("""
-            INSERT INTO flasktables (name, phone_number, email, message, image_path)
-            VALUES (%s, %s, %s, %s, %s)
-        """, (name, number, email, dec, image_path))
-        conn.commit()
+        # curser.execute("""
+        #     INSERT INTO flasktables (name, phone_number, email, message, image_path)
+        #     VALUES (%s, %s, %s, %s, %s)
+        # """, (name, number, email, dec, image_path))
+        # conn.commit()
+        flash("Your data asaved suvessfully.....")
         return redirect("/show")
     return "save data"
     

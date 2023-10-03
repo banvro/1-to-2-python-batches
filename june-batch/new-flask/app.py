@@ -54,7 +54,7 @@ def show():
     zx = request.args.get('q')
     if zx:
         curser.execute(f"select * from flasktables where Name = '{zx}'")
-        data = curser.fetchall()
+        data = curser.fetchall() 
     else:
         curser.execute("select * from flasktables")
         data = curser.fetchall()

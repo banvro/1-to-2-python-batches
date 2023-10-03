@@ -1,6 +1,6 @@
 # pip install flask
 
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash
 import mysql.connector
 import os
 
@@ -10,6 +10,7 @@ conn = mysql.connector.connect(host="localhost", username= "root", password="123
 curser = conn.cursor()
 
 app = Flask(__name__)
+app.secret_key = "asdhksdo8923ugaksjdbk"
 
 
 @app.route("/")
@@ -28,15 +29,17 @@ def savedata():
         email = request.form.get("email")
         dec = request.form.get("dec")
         img = request.files.get("img")
-        if img:
-           img.save(os.path.join('image', img.filename))
-           zx = (os.path.join('image', img.filename))
+        # if img:
+        #    img.save(os.path.join('static/image', img.filename))
+        #    zx = os.path.join('static/image', img.filename)
             
 
         # print(name, number, email, dec)
         # curser.execute(f"insert into flasktables values('{name}', {number},'{email}', '{dec}', '{img}')")
-        curser.execute("insert into flasktables('name', 'phone_number', 'email', 'message', image_path) values(%s, %s, %s, %s, %s)" (name, number, email, dec, img  ))
-        conn.commit()
+        # curser.execute("insert into flasktables(name, phone_number, email, message, image_path) values(%s, %s, %s, %s, %s)", (name, number, email, dec, zx  ))
+        # conn.commit()
+
+        flash("data saved sucssfullt", "success")
         return redirect("/show")
     return "save data"
     
@@ -48,10 +51,16 @@ def about():
 def services():
     return render_template("services.html")
 
-@app.route("/show")
+@app.route("/show", methods=["GET"])
 def show():
-    curser.execute("select * from flasktables")
-    data = curser.fetchall()
+    query = request.args.get("i")
+    if query:
+        # Use the query to filter the database results
+        curser.execute(f"SELECT * FROM flasktables WHERE Name = '{query}'")
+        data = curser.fetchall()
+    else:
+        curser.execute("select * from flasktables")
+        data = curser.fetchall()
     return render_template("show.html", mydata = data)
 
 @app.route("/delete/<xyz>", methods = ["POST",])

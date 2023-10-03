@@ -4,6 +4,16 @@
 
 {% block body %}
 
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class="flash-messages">
+      {% for message in messages %}
+        <li class="flash-message">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
 <div style="display: flex; justify-content: center;">
     <form style="padding: 20px; border: 2px solid red;" action="/savedata" method="post" enctype="multipart/form-data">
         <h1 style="text-align: center; color: green;">Contact Us</h1>
