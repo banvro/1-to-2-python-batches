@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from hlo.models import ContactUs
 # Create your views here.
 
@@ -12,3 +12,15 @@ def home(request):
         savedata = ContactUs(Name = name, Number = number, Emial = email, Message = msg)
         savedata.save()
     return render(request, "home.html")
+
+
+
+def showdata(request):
+    data = ContactUs.objects.all()
+    return render(request, "showdata.html", {"mydata" : data})
+
+
+def deletme(request, id):
+    data = ContactUs.objects.get(id = id)
+    data.delete()
+    return redirect("showdata")
