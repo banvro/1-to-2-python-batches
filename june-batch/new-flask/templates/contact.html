@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+
+
+{% block body %}
+
+<div style="display: flex; justify-content: center;">
+    <form style="padding: 20px; border: 2px solid red;" action="/savedata" method="post" enctype="multipart/form-data">
+        <h1 style="text-align: center; color: green;">Contact Us</h1>
+        <hr>
+        <hr>
+        <div style="display: flex; padding: 9px;">
+            <label style="margin-right: 64px;">Full Name</label>
+            <input type="text" name="name" placeholder="Enter your name.." >
+        </div>
+        <div style="display: flex; padding: 9px;">
+            <label style="margin-right: 64px;">Phone Number</label>
+            <input style="margin-left: -28px;" name= "number" type="number" placeholder="Enter your Phone Numver.." >
+        </div>
+        <div style="display: flex; padding: 9px;">
+            <label style="margin-right: 64px;">Email</label>
+            <input type="email" name="email" placeholder="Enter your Email Address.." >
+        </div>
+        <div style="display: flex; padding: 9px;">
+            <label style="margin-right: 64px;">Message</label>
+            <textarea placeholder="PLease Enter Your messgae.." name = "dec"></textarea>
+        </div>
+        <div style="display: flex; padding: 9px;">
+            <label style="margin-right: 64px;">Upload Image</label>
+            <input type="file" name="img">
+        </div>
+
+       <div style="    display: flex;
+       justify-content: center;
+       margin-top: 16px;
+       color: red;">
+        <button type="submit" class="btnx">Submit</button>
+       </div>
+        
+    </form>
+</div>
+
+
+{% endblock body %}

@@ -1,16 +1,26 @@
 from flask import Flask
-from flask import render_template, request
+from flask import render_template, request, redirect
+
 import mysql.connector
 
+
+conn = mysql.connector.connect(host = "localhost", username = "root", password = "1234", database = "xyz")
+
+curser = conn.cursor()
+
+
+
+
+
+
+
 app = Flask(__name__)
-conwc = mysql.connector.connect(host = "localhost", user = "root", password = "1234", database = "test", auth_plugin='mysql_native_password')
-couser = conwc.cursor()
 
 @app.route('/')
 def xyz():
     return "hello website.."
 
-@app.route('/about')
+@app.route('/abouts')
 def aboutus():
     return "this is my about page....."
 
@@ -30,18 +40,32 @@ def savedata():
     if request.method == "POST":
         uname = request.form.get('usernmae')
         age = request.form.get('age')
-        print(uname, age)
-        couser.execute(f'insert into hlo values("{uname}", {age})')
-        conwc.commit()
+        # print(uname, age)
+        curser.execute(f"insert into mytable values('{uname}', {age})")
+        conn.commit()
+
+        return redirect("xyz")
         # user = request.form['usernmae']
 
         return f"usernae is {uname} and user age is {age}"
 
-@app.route("/show")
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
+
+@app.route("/showdata")
 def showdata():
-    couser.execute('select * from hlo')
-    data = couser.fetchall()
-    return render_template("show.html", data = data)
+    curser.execute("select * from mytable")
+    mydata = curser.fetchall()
+    print(mydata)
+    return render_template("showdata.html", data = mydata)
+
+ 
 
 @app.route("/showupdate/<int:id>")
 def updateshow(id):
