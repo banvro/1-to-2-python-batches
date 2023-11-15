@@ -67,6 +67,12 @@ def showdata():
 
  
 
+@app.route("/showupdate/<int:id>")
+def updateshow(id):
+    couser.execute(f'select * from hlo where id = {id}')
+    data = couser.fetchone()
+    return render_template("update.html", data = data)
+
 
 
 if __name__ == "__main__":
