@@ -1,0 +1,49 @@
+# list : ordered, allow duplicate vlaues, mutalbe
+
+# tuple : ordered, allow duplicate values, imutable
+
+# Set : {} 
+
+# unordered, do not allow duplicate values, mutable
+
+
+
+
+# st = {12, 45, 23, 34, 12, 10, 10, 78, 5}
+
+# to add new data
+# 1) add()
+
+# st.add(1200)
+
+# to delete data
+# 1) pop()
+# 2) remove()
+# st = {12, 45, 23, 34, 12, 10, 10, 78, 5}
+
+# st.pop()
+# st.remove(45)
+
+# print(st)
+
+# print(type(st))
+
+
+a = (12, 23, 10,  34, 45, 23, 10)
+
+b = "hlo"
+
+
+[12, "hlo", 23, "hlo", 10, "10hlo",  34, "hlo", 45, "hlo", 23, "hlo", 10, "10hlo"]
+
+c = []
+
+for i in range(len(a)):
+    if a[i] == 10:
+        c.append(a[i])
+        c.append(f"{str(a[i])+b}")
+    else:
+        c.append(a[i])
+        c.append(b)
+
+print(c)
