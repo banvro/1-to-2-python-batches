@@ -51,10 +51,10 @@
 
 
     
-def saveinfo(**qw):
-    print(qw)
+# def saveinfo(**qw):
+#     print(qw)
     
     
-saveinfo(name = "kriss", age = 20, number = 9238649323)
+# saveinfo(name = "kriss", age = 20, number = 9238649323)
     
     
