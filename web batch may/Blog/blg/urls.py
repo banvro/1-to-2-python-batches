@@ -6,4 +6,5 @@ urlpatterns = [
     path("about", views.aboutus),
     path("contact", views.contactus),
     path("services", views.services),
+    path("save-data", views.savethinginfo)
 ]

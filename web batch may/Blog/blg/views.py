@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+from blg.models import ContactUs
 
 # Create your views here.
 
@@ -13,3 +15,18 @@ def contactus(request):
 
 def services(request):
     return render(request, "Services.html")
+
+
+
+def savethinginfo(request):
+    if request.method == "POST":
+        name = request.POST.get("fname")
+        email = request.POST.get("myemail")
+        phone_num = request.POST.get("pnumber")
+        mesag = request.POST.get("msg")
+        print(name, email, phone_num, mesag)
+
+        data = ContactUs(Full_Name = name, Email = email, Phone_number = phone_num, Message = mesag)
+        data.save()
+
+    return HttpResponse("Data Saved")
