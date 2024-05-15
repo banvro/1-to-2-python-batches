@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block xyz %}
+<style>
+    .card {
+        background: #f5f5f0;
+        border-radius: 5px;
+        margin: 10px auto;
+        overflow: hidden;
+        width: 90%;
+    }
+
+    .card h2 {
+        display: block;
+        padding: 0 10px;
+    }
+
+    .card p {
+        padding: 0 10px;
+    }
+
+    .card img {
+        height: 150px;
+        object-fit: cover;
+        margin: 0;
+    }
+
+    @media screen and (min-width: 600px) {
+        .card {
+            width: 47%;
+            margin: 1%;
+            float: left;
+        }
+
+        .card img {
+            height: 200px;
+        }
+    }
+
+    @media screen and (min-width: 1050px) {
+        .card {
+            width: 30%;
+            margin: 1%;
+            float: left;
+        }
+    }
+</style>
+
+<div>
+
+    
+    {% for i in mydata %}
+    <div class="card"><img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Phila_skyline_pan_copy.jpg/1024px-Phila_skyline_pan_copy.jpg" />
+        <h2>{{i.Full_Name}}</h2>
+        <p>{{i.Email}}.</p>
+        <p>{{i.Phone_number}}.</p>
+        <p>{{i.Message}}.</p>
+    </div>
+    {% endfor %}
+
+
+</div>
+
+{% endblock xyz %}
