@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+
+
+{% block body %}
+
+
+<div style="padding-left: 21%; padding-right: 21%;">
+    <h2 style="text-align: center; color: green;">Update Todo</h2>
+    <form action="/update-this-todo/{{todo.id}}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label style="color: green;" for="exampleInputEmail1" class="form-label">Todo Title</label>
+          <input type="text" class="form-control" value = {{todo.title}} placeholder="Enter Todo Title Here" name="title">
+        </div>
+        <div class="mb-3">
+          <label style="color: green;" for="exampleInputPassword1" class="form-label">Descrption</label>
+          <textarea type="text" name="dec" rows="4" placeholder="Explain your todo here" class="form-control" id="exampleInputPassword1">{{todo.desc}}</textarea>
+        </div>
+
+        <div style="text-align: center;">
+            <button type="submit" class="btn btn-success">Update Todo</button>
+        </div>
+      </form>
+</div>
+
+
+
+
+
+<div style="margin-top: 45px; padding-left: 10%; padding-right: 10%;">
+    <h2 style="text-align: center; color: green;">My All Todos</h2>
+    <table class="table">
+        <thead>
+          <tr>
+            <th style="color: green !important;" scope="col">#</th>
+            <th style="color: green !important;" scope="col">Todo Title</th>
+            <th style="color: green !important;" scope="col">Todo Descrption</th>
+            <th style="color: green !important;" scope="col">Added Date</th>
+            <th style="color: green !important;" scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        {% for todo in mytodos %}
+          <tr>
+            <th scope="row">{{todo.id}}</th>
+            <td>{{todo.title}}</td>
+            <td>{{todo.desc}}</td>
+            <td>{{todo.date}}</td>
+            <td>
+                <div>
+                    <button type="button" class="btn btn-success">Update</button>
+                    <a href="/delte-todo/{{todo.id}}">
+                    <button type="button" class="btn btn-danger">Delete</button></a>
+                </div>
+            </td>
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+</div>
+
+
+{% endblock body %}
